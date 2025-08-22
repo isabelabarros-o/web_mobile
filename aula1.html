@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Aula 1 - Introdução ao HTML</title>
+
+        <script type="text/javascript">
+            function soma(p1, p2){
+                alert(p1 + p2);
+            }
+        </script>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <script src="js/bootstrap.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/funcoes.js"></script>
+      
+    </head>
+    
+    <body>
+    <h1>primeiro cabeçalho</h1>
+    <h2>segundo cabeçalho</h2>
+    <h3>terceiro cabeçalho</h3>
+
+    <p>primeiro parágrafo</p>
+    <p>segundo parágrafo</p>
+
+        <img src="img\snoopy.jpg" alt="logo">
+
+        <a href="https://www.roblox.com" target="_blank"> Roblox</a> é uma plataforma de jogos online onde os usuários podem criar e jogar jogos feitos por outros usuários.
+
+                <h2>lista ordenada</h2>
+                <ol>
+                    <li>item 1</li>
+                    <li>item 2</li>
+                    <li>item 3</li>
+                </ol>
+
+                <h2>lista não ordenada</h2>
+                <ul>
+                    <li>item 1</li> 
+                    <li>item 2</li>
+                    <li>item 3</li>
+                </ul>
+
+
+                <table>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                    </tr>
+                    <tr>
+                        <td>Alice</td>
+                        <td>19</td> 
+                    </tr>
+                    <tr>
+                        <td>Márcia</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Maria</td>
+                        <td>28</td>
+                    </tr>
+                </table>
+                <form action="/cadastro/" method="post">
+                    <label for="nome">login:</label>
+                    <input type="text" id="login" name="login">
+
+                    <label for="senha">senha:</label>
+                    <input type="password" id="senha" name="senha">
+
+                    <button type="submit">Enviar</button>
+
+                    <label for="Idade">Idade:</label>
+                    <input type="number" id="idade" name="idade" min="18" max="99"></label>
+                    </form>
+
+        Data de nascimento: <input type="date" name="data de nascimento" min="2025-01-02">
+
+        Auto Complete: <input list="cheeses">
+        <datalist id="cheeses">
+            <option> Camembert</option>
+            <option> Cheddar</option>
+            <option> Cotija</option>
+            <option> Chevre</option>
+            <option> Emmental</option>
+            <option> Feta</option>
+            <option> Gouda</option>
+            <option> Mozzarella</option>/
+        </datalist>
+
+                <input type="hidden" name= "country" value="Brasil">
+
+                <input type="reset" value="Limpar">
+                <input type="submit" value="Enviar">
+
+                <button type="button" onclick="alert('Hello world')"> Botao 1</button>
+                <button type="button" onclick="soma(10, 5)";> Botao 2</button>
+
+
+    </body>
+</html>
