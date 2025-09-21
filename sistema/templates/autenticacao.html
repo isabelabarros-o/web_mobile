@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Autenticação</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<style>
+/* Mensagem de erro customizada para combinar com o design */
+.alert-danger {
+  background: #ffe5e5;
+  color: #d11e1e;
+  border: 1px solid #ffb3b3;
+  border-radius: 6px;
+  padding: 12px 18px;
+  margin: 18px auto 0 auto;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(209,30,30,0.06);
+  font-weight: 500;
+  max-width: 320px;
+  display: block;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #1e4bd1;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  position: relative;
+}
+
+.login-container h1 {
+  color: #1e4bd1;
+  margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+input::placeholder {
+  color: #999;
+}
+
+label {
+  display: block;
+  color: #333;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.form-check-input {
+  margin-right: 10px;
+}
+
+.form-check-label {
+  color: #333;
+}
+
+button[type="submit"] {
+  width: 100%;
+  background-color: #1e4bd1;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #173fad;
+}
+
+.forgot-password {
+  margin-top: 15px;
+  display: block;
+  color: #1e4bd1;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 300%;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  transform: rotate(15deg);
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  bottom: -100px;
+  left: -150px;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+</style>
+
+<body>
+  <div class="login-container">
+    <h1>Login</h1>
+    <form action="/" method="POST" >
+      {% csrf_token %}
+      <label for="usuario">Email:</label>
+      <input type="text" name="usuario" id="usuario" placeholder="Digite seu e-mail">
+
+      <label for="senha">Senha:</label>
+      <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
+
+      <div class="mb-3 form-check" style="text-align: left; margin-top: 10px;">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Concordo com os termos.</label>
+      </div>
+
+      <button type="submit">Entrar</button>
+      <a href="#" class="forgot-password">Esqueceu a senha?</a>
+    </form>
+  </div>
+      {% if mensagem %}
+        <div class="alert-danger" role="alert">
+          {{ mensagem }}
+        </div>
+      {% endif %}
+</body>
+</html>
