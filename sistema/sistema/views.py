@@ -1,8 +1,7 @@
 # -*- coding: utf-8 *-
-from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 class Login(View):
     """
@@ -22,7 +21,6 @@ class Login(View):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponse("Usuário autenticado com sucesso!")
-                #return redirect('home')
+                return redirect("/veiculo")
         else:
             return render(request, 'autenticacao.html', {'mensagem': 'Usuário ou senha inválidos!'})

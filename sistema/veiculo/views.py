@@ -1,8 +1,8 @@
 from django.views.generic import ListView
-from veiculo.models import veiculo
+from veiculo.models import Veiculo
 
 class ListarVeiculos(ListView):
-    model = veiculo
+    model = Veiculo
     context_object_name = 'lista_veiculos'
     template_name = 'veiculo/listar.html'
     
