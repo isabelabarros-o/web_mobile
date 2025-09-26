@@ -10,7 +10,10 @@ class Login(View):
 
     def get(self,request):
         contexto = {}
-        return render(request, 'autenticacao.html', contexto)
+        if request.user.is_authenticated:
+            return redirect("/veiculo")
+        else:
+            return render(request, 'autenticacao.html', contexto)
     
     def post(self,request):
         # Obtem as credenciais de autenticação
@@ -23,4 +26,13 @@ class Login(View):
                 login(request, user)
                 return redirect("/veiculo")
         else:
-            return render(request, 'autenticacao.html', {'mensagem': 'Usuário ou senha inválidos!'})
+            return render(request, 'autenticacao.html', {'mensagem': 'Usuário ou senha inválidos!'})    
+        
+class Logout(View):
+    """
+    Class Based View para realizar logout de usuários.
+    """
+
+    def get(self,request):
+        logout(request)
+        return redirect("/")
