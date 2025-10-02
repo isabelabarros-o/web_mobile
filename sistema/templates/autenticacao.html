@@ -10,134 +10,102 @@
 </head>
 
 <style>
-/* Mensagem de erro customizada para combinar com o design */
-.alert-danger {
-  background: #ffe5e5;
-  color: #d11e1e;
-  border: 1px solid #ffb3b3;
-  border-radius: 6px;
-  padding: 12px 18px;
-  margin: 18px auto 0 auto;
-  font-size: 1rem;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(209,30,30,0.06);
-  font-weight: 500;
-  max-width: 320px;
-  display: block;
-}
+/* Estilos Gerais */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Usando uma fonte serifada para combinar com a imagem */
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-  background: #1e4bd1;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+    /* Cor de fundo azul acinzentado da imagem */
+    background: #3B507C;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Alinha itens verticalmente */
+    align-items: center;
+    justify-content: center;
 }
 
+/* Container do Login */
 .login-container {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  text-align: center;
-  width: 100%;
-  max-width: 360px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  position: relative;
+    /* Cor de fundo creme/bege do container */
+    background: #F5F0EA;
+    padding: 40px;
+    /* Borda arredondada mais sutil */
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 380px;
+    /* Removendo a sombra para um visual mais limpo */
+    box-shadow: none;
 }
 
 .login-container h1 {
-  color: #1e4bd1;
-  margin-bottom: 30px;
+    /* Cor azul escuro para o título */
+    color: #10224F;
+    margin-bottom: 25px;
+    font-size: 2.5rem; /* Aumentando um pouco o título */
+    font-weight: 700;
 }
 
+/* Rótulos dos campos */
+label {
+    display: block;
+    /* Cor azul escuro para os rótulos */
+    color: #10224F;
+    margin-bottom: 8px;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Campos de Input */
 input[type="text"],
 input[type="password"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 10px 0 20px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-  color: #333;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    /* Borda cinza clara e sutil */
+    border: 1px solid #D1D1D1;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    color: #333;
+    font-size: 1rem;
 }
 
-input::placeholder {
-  color: #999;
-}
-
-label {
-  display: block;
-  color: #333;
-  margin-bottom: 5px;
-  text-align: left;
-}
-
-.form-check-input {
-  margin-right: 10px;
-}
-
-.form-check-label {
-  color: #333;
-}
-
+/* Botão de Envio */
 button[type="submit"] {
-  width: 100%;
-  background-color: #1e4bd1;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 20px;
+    width: 100%;
+    /* Cor de fundo azul escuro para o botão */
+    background-color: #10224F;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Reduzindo a margem superior */
+    font-size: 1rem;
 }
 
 button[type="submit"]:hover {
-  background-color: #173fad;
+    /* Efeito hover para o botão */
+    background-color: #2c447c;
 }
 
+/* Link "Esqueceu sua senha?" */
 .forgot-password {
-  margin-top: 15px;
-  display: block;
-  color: #1e4bd1;
-  text-decoration: underline;
-  font-size: 0.9rem;
+    margin-top: 20px;
+    display: block;
+    /* Cor azul escuro para o link */
+    color: #10224F;
+    text-decoration: underline;
+    font-size: 0.9rem;
 }
-
-body::before {
-  content: "";
-  position: absolute;
-  top: -100px;
-  left: -100px;
-  width: 300%;
-  height: 300px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
-  transform: rotate(15deg);
-}
-
-body::after {
-  content: "";
-  position: absolute;
-  bottom: -100px;
-  left: -150px;
-  width: 400px;
-  height: 400px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
-  z-index: 0;
-}
-
 </style>
 
 <body>
@@ -150,11 +118,6 @@ body::after {
 
       <label for="senha">Senha:</label>
       <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
-
-      <div class="mb-3 form-check" style="text-align: left; margin-top: 10px;">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Concordo com os termos.</label>
-      </div>
 
       <button type="submit">Entrar</button>
       <a href="#" class="forgot-password">Esqueceu a senha?</a>
