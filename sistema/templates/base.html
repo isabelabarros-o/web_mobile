@@ -11,6 +11,9 @@
     <link type="text/css" rel="stylesheet" href="{% static 'bootstrap-5.3.8/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script type="text/javascript" src="{% static 'bootstrap-5.3.8/js/bootstrap.bundle.min.js' %}"></script>
+    <link href="{% static 'css/novo.css' %}" rel="stylesheet">
+    <link href="{% static 'css/listar.css' %}" rel="stylesheet">
+
 
     {% block css_local %}{% endblock %}
     {% block javascript_local %}{% endblock %}
@@ -23,17 +26,17 @@
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
               <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li>
-                    <a href="/veiculo" class="nav-link px-2 link-secondary">
+                    <a href="/veiculo/" class="nav-link px-2 link-secondary">
                         Listar veículos
                     </a>
                 </li>
                 <li>
-                    <a href="/veiculo/novo" class="nav-link px-2 link-dark">
+                    <a href="/veiculo/novo/" class="nav-link px-2 link-dark">
                         Cadastrar veículo
                     </a>
                 </li>
                 <li>
-                    <a href="/anuncio" class="nav-link px-2 link-dark">
+                    <a href="/anuncio/" class="nav-link px-2 link-dark">
                         Anúncios
                     </a>
                 </li>
@@ -52,7 +55,9 @@
     </div>
 
     <div id="conteudo">
-        {% block conteudo %}{% endblock %}
+        {% block conteudo %}
+
+        {% endblock %}
     </div>
 </body>
 </html>

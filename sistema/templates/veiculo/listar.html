@@ -8,7 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Define a fonte 'Inter' como padrão para todo o corpo da página */
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -38,8 +43,13 @@ header {
 .col-md-3 .btn-secondary {
     background-color: #10224F !important;
     border: none;
-    border-radius: 8px;
+    border-radius: 20px;
     font-weight: 600;
+    padding: 6px 16px;
+
+    /* --- ADIÇÕES PARA GARANTIR QUE O TEXTO APAREÇA --- */
+    color: white !important;      /* Força a cor do texto para branco */
+    font-size: 1rem !important;   /* Força um tamanho de fonte visível (16px) */
 }
 
 /* Badge "Admin" */
@@ -98,6 +108,7 @@ p.fw-semibold .badge {
 }
 
 /* ----- CARD DE VEÍCULO ----- */
+/* ----- CARD DE VEÍCULO ----- */
 .card {
     background-color: #F5F0EA; /* Cor de fundo do card */
     border-radius: 20px;
@@ -105,8 +116,7 @@ p.fw-semibold .badge {
     box-shadow: 0 4px 15px rgba(0,0,0,0.06);
     overflow: hidden; /* Garante que elementos internos respeitem a borda */
     padding: 2rem !important;
-    max-width: 500px; /* Largura máxima para centralizar e parecer com a imagem */
-    margin: 0 auto;   /* Centraliza o card na coluna */
+    height: 100%; /* Garante que todos os cards na mesma linha tenham a mesma altura */
 }
 
 /* Bloco da imagem placeholder */
@@ -223,15 +233,15 @@ p.fw-semibold .badge {
         <span class="badge bg-primary">{{ lista_veiculos|length }}</span>
     </p>
 
-    <div class="row g-3">
+    <div class="row">
         {% for veiculo in lista_veiculos %}
-        <div class="col-12">
+    <div class="col-12 col-lg-6 mb-4">
             <div class="card p-3">
                 <div class="row g-3 align-items-center">
                     <div class="col-4 col-md-3">
                         {% if veiculo.foto %}
                             <img src="{{ veiculo.foto.url }}" 
-                                 class="img-fluid rounded" 
+                                 class="card-img-top rounded" 
                                  alt="Foto do veículo" 
                                  style="object-fit: cover; width: 100%; height: 120px;">
                         {% else %}

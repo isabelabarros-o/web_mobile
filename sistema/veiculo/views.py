@@ -4,6 +4,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from veiculo.forms import FormularioVeiculo
 from django.urls import reverse_lazy
 from datetime import datetime
+from django.views import View
+from django.http import FileResponse, Http404
+from django.core.exceptions import ObjectDoesNotExist
 
 class ListarVeiculos(LoginRequiredMixin, ListView):
     model = Veiculo
@@ -12,8 +15,20 @@ class ListarVeiculos(LoginRequiredMixin, ListView):
     
     def get_queryset(self):
         return Veiculo.objects.all()
+    
+
 class CriarVeiculos(LoginRequiredMixin, CreateView):
     model = Veiculo
     form_class = FormularioVeiculo
     template_name = 'veiculo/novo.html'
-    success_url = reverse_lazy('lista_veiculos')
+    success_url = reverse_lazy('listar-veiculos')
+
+class FotoVeiculo(View):
+    def get(self, request, arquivo):
+        try:
+            veiculo = Veiculo.objects.get(foto='veiculos/fotos/{}'.format(arquivo))
+            return FileResponse(veiculo.foto)
+        except ObjectDoesNotExist:
+                raise Http404("Veículo não possui foto.")
+        except Exception as exception:
+            raise exception
