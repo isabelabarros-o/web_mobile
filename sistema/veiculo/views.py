@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from veiculo.models import Veiculo
 from django.contrib.auth.mixins import LoginRequiredMixin
 from veiculo.forms import FormularioVeiculo
@@ -26,9 +26,26 @@ class CriarVeiculos(LoginRequiredMixin, CreateView):
 class FotoVeiculo(View):
     def get(self, request, arquivo):
         try:
-            veiculo = Veiculo.objects.get(foto='veiculos/fotos/{}'.format(arquivo))
+            veiculo = Veiculo.objects.get(foto='veiculo/fotos/{}'.format(arquivo))
             return FileResponse(veiculo.foto)
         except ObjectDoesNotExist:
                 raise Http404("Veículo não possui foto.")
         except Exception as exception:
             raise exception
+        
+class EditarVeiculo(LoginRequiredMixin, UpdateView):
+    """
+    View para editar um veículo existente.
+    """
+    model = Veiculo
+    form_class = FormularioVeiculo
+    template_name = 'veiculo/editar.html'
+    success_url = reverse_lazy('listar-veiculos')
+
+class DeletarVeiculos(LoginRequiredMixin, DeleteView):
+    '''
+    View para deletar um veículo existente.
+    '''
+    model = Veiculo
+    template_name = 'veiculo/deletar.html'
+    success_url = reverse_lazy('listar-veiculos')
