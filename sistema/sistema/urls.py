@@ -22,5 +22,6 @@ urlpatterns = [
     path('', Login.as_view(), name='login'),
     path('admin/', admin.site.urls),
     path('veiculo/', include('veiculo.urls'), name='veiculo'),
-    path('logout/', Logout.as_view(), name='logout')
+    path('logout/', Logout.as_view(), name='logout'),
+    path('anuncio/', include('anuncio.urls'), name='anuncio')
 ]
