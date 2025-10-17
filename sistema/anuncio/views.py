@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from anuncio.models import Anuncio
+from veiculo.models import Veiculo
 from django.contrib.auth.mixins import LoginRequiredMixin
 from anuncio.forms import FormularioAnuncio
 from django.urls import reverse_lazy
@@ -30,7 +31,7 @@ class CriarAnuncio(LoginRequiredMixin, CreateView):
     """
     model = Anuncio
     form_class = FormularioAnuncio
-    template_name = 'anuncio/criar_anuncio.html'
+    template_name = 'anuncio/novo.html'
     success_url = reverse_lazy('listar-anuncios')
 
     def form_valid(self, form):
@@ -41,13 +42,9 @@ class CriarAnuncio(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
     
     def get_form(self, form_class=None):
-        """
-        Filtra apenas veículos que não possuem anúncios ativos.
-        """
         form = super().get_form(form_class)
-        # Filtrar veículos que não têm anúncios ativos
         veiculos_com_anuncios = Anuncio.objects.filter(status='ativo').values_list('veiculo_id', flat=True)
-        form.fields['veiculo'].queryset = Anuncio.objects.exclude(id__in=veiculos_com_anuncios)
+        form.fields['veiculo'].queryset = Veiculo.objects.exclude(id__in=veiculos_com_anuncios)
         return form
 
 class EditarAnuncio(LoginRequiredMixin, UpdateView):

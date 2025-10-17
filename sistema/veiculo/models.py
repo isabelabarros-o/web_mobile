@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 from veiculo.consts import OPCOES_MARCAS, OPCOES_COR, OPCOES_COMBUSTIVEL
 
 # Create your models here.
@@ -9,3 +10,10 @@ class Veiculo(models.Model):
     cor = models.SmallIntegerField(choices=OPCOES_COR)
     combustivel = models.SmallIntegerField(choices=OPCOES_COMBUSTIVEL)
     foto = models.ImageField(blank=True, null=True, upload_to='veiculo/fotos')
+
+    @property
+    def veiculo_novo(self):
+        return self.ano == datetime.now().year
+
+    def anos_de_uso(self):
+            return datetime.now().year - self.ano
