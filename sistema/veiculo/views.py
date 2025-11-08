@@ -10,7 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from veiculo.serializers import SerializadorVeiculo
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import permissions
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, DestroyAPIView
 
 class ListarVeiculos(LoginRequiredMixin, ListView):
     model = Veiculo
@@ -57,6 +57,17 @@ class DeletarVeiculos(LoginRequiredMixin, DeleteView):
 class APIListarVeiculos(ListAPIView):
     '''
     View para listar os veículos (por meio da API REST).
+    '''
+    serializer_class = SerializadorVeiculo
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Veiculo.objects.all()
+    
+class APIDeletarVeiculo(DestroyAPIView):
+    '''
+    View para deletar um veículo (por meio da API REST).
     '''
     serializer_class = SerializadorVeiculo
     authentication_classes = [TokenAuthentication]

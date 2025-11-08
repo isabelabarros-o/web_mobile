@@ -1,43 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-// Importe todos os componentes que você está usando no HTML
-import { 
-  IonContent, IonHeader, IonTitle, IonToolbar, 
-  LoadingController, NavController, ToastController, 
-  IonButtons, IonMenuButton, IonText, IonCard, 
-  IonCardHeader, IonCardTitle, IonCardSubtitle, 
-  IonCardContent, IonList, IonItem, IonItemSliding, 
-  IonThumbnail, IonLabel, IonItemOptions, IonItemOption,
-  IonIcon  // <--- ADICIONADO PARA CORRIGIR O ERRO DO ÍCONE
-} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, LoadingController, NavController, ToastController, IonButtons, IonMenuButton, IonText, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonList, IonItem, IonItemSliding, IonThumbnail, IonLabel, IonItemOptions, IonItemOption } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
-import { Veiculo } from './veiculo.model'; // Ajuste o caminho se necessário
+import { Veiculo } from './veiculo.model'
 import { Usuario } from '../login/usuario.model';
 import { CapacitorHttp, HttpOptions, HttpResponse } from '@capacitor/core';
-import { addIcons } from 'ionicons'; // <--- Importe a função para adicionar ícones
-import { carSportOutline } from 'ionicons/icons'; // <--- Importe o ícone específico
 
 @Component({
   standalone: true,
-  selector: 'app-home', // <--- MUDADO
-  templateUrl: './home.page.html', // <--- MUDADO
-  styleUrls: ['./home.page.scss'], // <--- MUDADO
-  imports: [
-    // Módulos principais do Angular
-    CommonModule, 
-    FormsModule, 
-    
-    // Todos os componentes Ionic importados
-    IonItemOption, IonItemOptions, IonLabel, IonItemSliding, 
-    IonItem, IonList, IonCardContent, IonCardSubtitle, 
-    IonCardTitle, IonCardHeader, IonCard, IonText, 
-    IonButtons, IonMenuButton, IonContent, IonHeader, 
-    IonTitle, IonToolbar, IonThumbnail, IonIcon // <--- ADICIONADO
-  ],
+  selector: 'app-veiculo',
+  templateUrl: './veiculo.page.html',
+  styleUrls: ['./veiculo.page.scss'],
+  imports: [IonItemOption, IonItemOptions, IonLabel, IonItemSliding, IonItem, IonList, IonCardContent, IonCardSubtitle, IonCardTitle, IonCardHeader, IonCard, IonText, IonButtons, IonMenuButton, IonContent, IonHeader, IonTitle, IonToolbar, IonThumbnail, CommonModule, FormsModule],
   providers: [Storage]
 })
-export class HomePage implements OnInit { // <--- NOME DA CLASSE MUDADO
+export class VeiculoPage implements OnInit {
 
   public usuario: Usuario = new Usuario();
   public lista_veiculos: Veiculo[] = [];
